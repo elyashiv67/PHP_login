@@ -92,7 +92,7 @@
         }
     $name = $_POST['name'];
     $username = $_POST['username'];
-    $password = md5($_POST['password']);
+    $password = md5("salt" . $_POST['password'] . "another_salt");
     $query = "INSERT INTO users (name, user_name, pass) VALUES ('$name', '$username', '$password')";
     $result = mysqli_query($mysqli,$query);
     console_log($result);

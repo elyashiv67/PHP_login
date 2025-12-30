@@ -86,7 +86,7 @@
     $err_msg = "you are locked out";
         $_SESSION['err_log'] = $err_log;
         $name = addslashes($_GET['name']);
-        $password = md5($_GET['password']);
+    $password = md5("salt" . $_GET['password'] . "another_salt");
         
         //פתיחה והתחברות למסד נתונים
         $db_host = 'localhost';
