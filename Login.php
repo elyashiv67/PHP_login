@@ -82,6 +82,7 @@
 <?php
     if(isset($_GET['send'])){
     session_start();
+    $_SESSION['is_logged_in'] = false;
     $err_log = (isset($_SESSION['err_log'])) ? $_SESSION['err_log'] : 0;
     $err_msg = "you are locked out";
         $_SESSION['err_log'] = $err_log;
@@ -119,6 +120,8 @@
             $_SESSION['err_log'] = $err_log;
         }else if($name == $row['name'] && $password == $row['pass']){
             console_log('logged in');
+            $_SESSION['is_logged_in'] = true;
+            header("Location: reviews.php");
             $_SESSION['err_log'] = 0;
         }
         console_log($err_log);
